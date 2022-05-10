@@ -39,12 +39,10 @@ func test(url string) {
 	for {
 		epoch, err := getEpochNumber(client)
 		if err != nil {
-			fmt.Println("Failed to get epoch number:", err)
+			fmt.Println(url, "\tFailed to get epoch number:", err)
 		} else if len(epoch) == 0 {
-			fmt.Println("Invalid epoch returned")
+			fmt.Println(url, "\tInvalid epoch returned")
 			break
-		} else {
-			fmt.Println("epoch number:", epoch)
 		}
 
 		if len(os.Args) >= 3 {
