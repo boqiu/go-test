@@ -21,7 +21,9 @@ func main() {
 		fmt.Println("Failed to connect to fullnode:", os.Args[1])
 		return
 	}
-	client.Close()
+	defer client.Close()
+
+	fmt.Println("Succeeded to connect to:", os.Args[1])
 
 	for {
 		epoch, err := getEpochNumber(client)
@@ -30,6 +32,8 @@ func main() {
 		} else if len(epoch) == 0 {
 			fmt.Println("Invalid epoch returned")
 			break
+		} else {
+			fmt.Println("epoch number:", epoch)
 		}
 
 		if len(os.Args) >= 3 {
