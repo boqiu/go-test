@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 
 	rpc "github.com/openweb3/go-rpc-provider"
@@ -16,7 +17,17 @@ func main() {
 		return
 	}
 
-	client, err := rpc.Dial(os.Args[1])
+	urls := strings.Split(os.Args[1], ",")
+
+	for _, v := range urls {
+		go test(v)
+	}
+
+	select {}
+}
+
+func test(url string) {
+	client, err := rpc.Dial(url)
 	if err != nil {
 		fmt.Println("Failed to connect to fullnode:", os.Args[1])
 		return
