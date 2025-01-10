@@ -32,7 +32,7 @@ func main() {
 		Run:   test,
 	}
 
-	cmd.Flags().StringVar(&flags.Url, "url", "https://main.confluxrpc.com/DisjEM6Gno6BJP2n9FhiDH4Ev6aMfSNU8GqzGtXAZTG8zZXbKNSmcXwa5uK75pWBKmdRCJ7aNwN4R5ckKv5kxJnFc", "Fullnode RPC endpoint")
+	cmd.Flags().StringVar(&flags.Url, "url", "https://main.confluxrpc.com", "Fullnode RPC endpoint")
 	cmd.Flags().DurationVar(&flags.RpcOption.RequestTimeout, "rpc-timeout", 3*time.Second, "Fullnode RPC timeout")
 	cmd.Flags().Uint64Var(&flags.EpochFrom, "epoch-from", 0, "Epoch number to test from")
 	cmd.Flags().Uint64Var(&flags.NumEpochs, "epoch-count", 30, "Number of epochs to test")
